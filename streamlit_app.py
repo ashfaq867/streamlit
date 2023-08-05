@@ -1,6 +1,6 @@
-!pip install transformers -q
+# !pip install transformers -q
 
-!pip install gradio -q
+# !pip install gradio -q
 
 from transformers import pipeline
 
