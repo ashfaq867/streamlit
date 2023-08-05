@@ -1,4 +1,3 @@
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -69,10 +68,33 @@ def main():
     if name:
         st.write(f"Hello, {name}! Welcome to your personalized Streamlit app.")
 
-    # Button to run another Python script
-    if st.button("Run task3.py"):
-        st.write("Running task3.py as a separate process...")
-        subprocess.run(["python", "task3.py"])
+    # Button to run file2.py
+    if st.button("Run Speech-to-Text App"):
+        st.write("Running the Speech-to-Text App...")
+        # Code from file 2
+        import gradio as gr
+        import time
+        from transformers import pipeline
+
+        p = pipeline("automatic-speech-recognition")
+
+        def transcribe(audio, state=""):
+            time.sleep(3)
+            text = p(audio)["text"]
+            state += text + " "
+            return state, state
+
+        gr.Interface(
+            fn=transcribe,
+            inputs=[
+                gr.inputs.Audio(source="microphone", type="filepath"),
+                'state'
+            ],
+            outputs=[
+                "textbox",
+                "state"
+            ],
+            live=True).launch()
 
 
 if __name__ == "__main__":
