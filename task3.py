@@ -7,9 +7,9 @@ Original file is located at
     https://colab.research.google.com/drive/121XZH_yA5fzqud7Vk6Dc0gme8MWbWRvX
 """
 
-# !pip install transformers -q
+!pip install transformers -q
 
-# !pip install gradio -q
+!pip install gradio -q
 
 from transformers import pipeline
 
